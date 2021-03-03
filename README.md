@@ -11,3 +11,7 @@
 
 -- Belangrijk --
 1. Kijken hoe Flask werkt
+
+-- Committing conventies --
+1. Naam (indien meerdere mensen aan een module werken)
+2. Veranderingen die zijn toegepast
