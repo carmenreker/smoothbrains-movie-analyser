@@ -11,7 +11,7 @@ Indy
 Taede
 
 ## Vergelijken
-Sybren
+Sijbren
 
 ## Tokeniser & cleaner
 Carmen
