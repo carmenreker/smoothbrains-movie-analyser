@@ -4,6 +4,7 @@ import re
 import pysrt
 
 def loadsubtitles(filepath):
+    """ Loads the subtitles and returns it """
     subs = pysrt.open(filepath)
     data = {}
 
@@ -15,11 +16,10 @@ def loadsubtitles(filepath):
         if text not in data:
             data[text] = time
 
-        print(text, time)
+        #print(text, time)
 
     return data
 
-
-# aanroepen door:
+# aanroepen met:
 #data = loadsubtitles('testfiles/testsubtitles.srt')
 #print(data)
