@@ -1,5 +1,5 @@
 #!/bin/python3
-# Author: I. van Boven
+# Author(s): I. van Boven
 
 import sys
 import re

@@ -1,3 +1,5 @@
+# Author(s): Taede Meijer, Carmen Reker
+
 import re
 import pysrt
 

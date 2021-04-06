@@ -1,6 +1,6 @@
 # Filename: main.py
 # Description: opens the files and calls the other programs
-# Author: Taede Meijer (als je iets verandert/toevoegd, je naam erbij gooien)
+# Author(s): Taede Meijer (als je iets verandert/toevoegd, je naam erbij gooien)
 
 
 def main():
