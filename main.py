@@ -2,8 +2,8 @@
 # Description: opens the files and calls the other programs
 # Author(s): Taede Meijer, Sijbren van Vaals
 
-from loadsubtitle import *
-
+from loadsubtitle import loadsubtitles
+from timestamps import add_timestamps
 def match(script, subtitles):
     """Compares the subtitles to the script, and prints the percentage
        of matches"""
@@ -37,14 +37,13 @@ def main():
 
     data = loadsubtitles('movies/mission_impossible/mi.srt')        
 
+    print(add_timestamps(movie, data))
     # Uncomment deze code om de functie uit te voeren
     match(movie, data)
 
+    
 if __name__ == "__main__":
     main()
 
 # Wat nog moet:
 # De juiste naam bij de subtitle zetten ?
-# Timestamp moet in het script. ( Daarvoor is het handig 
-#   als het hele script gewoon 1 lange string is, dan kunnen
-#   we die opslaan naar een nieuwe script.txt )

@@ -1,6 +1,4 @@
 # Author(s): Taede Meijer, Carmen Reker
-
-import re
 import pysrt
 
 def loadsubtitles(filepath):
@@ -13,11 +11,10 @@ def loadsubtitles(filepath):
         #print(subtitle.text)
         text = subtitle.text
         time = str(subtitle.start)
-        if text not in data:
-            data[text] = time
+        data[text] = time
 
         #print(text, time)
-
+    #print(data)
     return data
 
 # aanroepen met:
