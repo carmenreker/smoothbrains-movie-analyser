@@ -2,6 +2,8 @@
 
 # Wat nog moet:
 # 1
-We kunnen niet verder met de namen omdat de labels nog niet af zijn.
+We kunnen niet verder met de namen omdat de labels (Indy) nog niet af zijn.
 # 2
+User interface (Sijbren)
+# 3
 Output moet goed worden, naar csv of json? maar hoe?! joost mag het weten
