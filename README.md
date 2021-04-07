@@ -1,30 +1,5 @@
 # smoothbrains-movie-analyser
 
-# Modules
-## Data inlezen
-Taede
-
-## Labels toevoegen
-Indy
-
-## Timestamps & character names
-Taede
-
-## Vergelijken
-Sijbren
-
-## Tokeniser & cleaner
-Carmen
-
-## User interface (Flask / Argparse)
-Kijken we nog naar, Taede wil sowieso wel kijken
-
-## Unit tests
-Samen overleggen
-
-# Belangrijk
-1. Kijken hoe Flask werkt
-
-# Committing conventies
-1. Naam (indien meerdere mensen aan een module werken)
-2. Veranderingen die zijn toegepast
+# Wat nog moet:
+We kunnen niet verder met de namen omdat de labels nog niet af zijn.
+Output moet goed worden, naar csv of json? maar hoe?! joost mag het weten
