@@ -1,46 +1,61 @@
 #!/bin/python3
-# Author(s): I. van Boven
+# Author(s): Indy van Boven
 
 import sys
 import re
 
 
 def create_labels(argv):
-    file = argv[1]
-    with open(file, 'r') as inp:
-        text = inp.read()                                           # special cases need to go first
-        #for i in text:
-            #if i in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
-                #text = re.sub(r'\n(\s+[A-Za-z0-9])', r'\n     \1', text)
-                #text = re.sub(r'\n([A-Za-z0-9])', r'\n     \1', text)
-        all_lines = re.sub(r'\n[0-9][0-9]?[0-9]?[A-Z]?', r'\n  ', text) #special cases nummers voor int/ext
-        spec_meta = re.sub(r'\n\n(\s+CUT TO)', r'\n\nM|\1', all_lines)
-        spec_meta = re.sub(r'\n\n\n(\s+THE END)', r'\n\n\nM|\1', spec_meta)
+    """adds labels to a script and returns the labelled script"""
+    #file = argv[1]
+    #with open(file, 'r') as inp:
+        #text = inp.read()
         
-        scene_boundary = re.sub(r'\n(      ?EXT)', r'\nS|\1', spec_meta)
-        scene_boundary = re.sub(r'\n(      ?INT)', r'\nS|\1', scene_boundary)
+        # replacing tabs with spaces to create indentation
+        text = re.sub(r'\n([A-Za-z])', r'\n     \1', text)
+        text = re.sub(r'\n\t\t\t\t', r'\n                           ', text)
+        text = re.sub(r'\n\t\t\t', r'\n                   ', text)
+        text = re.sub(r'\n\t\t', r'\n                 ', text)
         
-        character_label = re.sub(r'\n(                           ? ? ? ? ?[A-Z])', r'\nC|\1', scene_boundary) 
-        spec_case_descript = re.sub(r'\n(                CONNECTION)', r'\nN|\1', character_label)
-        spec_case_descript = re.sub(r'\n(                    TRANSFER)', r'\nN|\1', spec_case_descript)
-        spec_case_meta = re.sub(r'\n(                   ? ? ? ?\([A-Za-z])', r'\nM|\1', spec_case_descript)
+        # special cases pagenumbers and CUT TO and THE END, metadata
+        text = re.sub(r'\n[0-9][0-9]?[0-9]?[A-Z]?', r'\n  ', text) 
+        text = re.sub(r'\n\n(\s+CUT TO)', r'\n\nM|\1', text)
+        text = re.sub(r'\n\n\n(\s+THE END)', r'\n\n\nM|\1', text)
         
-        dialogue_label = re.sub(r'\n(                 ? ?[A-Za-z0-9-\.\"])', r'\nD|\1', spec_case_meta) 
+        # indentation scene boundary INT and EXT
+        text = re.sub(r'\n(      ?EXT)', r'\nS|\1', text)
+        text = re.sub(r'\n(      ?INT)', r'\nS|\1', text)
         
-        scene_discription = re.sub(r'\n(                      [A-Za-z])', r'\nN|\1', dialogue_label)
-        scene_discription = re.sub(r'\n(                              [A-Za-z])', r'\nN|\1', scene_discription)
-        scene_discription = re.sub(r'\n(      ?[A-Za-z\"])', r'\nN|\1', scene_discription)
-        scene_discription = re.sub(r'\n(     --)', r'\nN|\1', scene_discription)
+        # special cases for scence description and metadata 
+        text = re.sub(r'\n(                CONNECTION)', r'\nN|\1', text)
+        text = re.sub(r'\n(                    TRANSFER)', r'\nN|\1', text)
+        text = re.sub(r'\n(                   ? ? ? ?\([A-Za-z])', r'\nM|\1', text)
         
-        metadata = re.sub(r'\n(                     \(?[A-Za-z])', r'\nM|\1', scene_discription)
-        #metadata = re.sub(r'\n\n(\s+CUT TO)', r'\n\nM|\1', metadata)
-        #metadata = re.sub(r'\n\n\n(\s+THE END)', r'\n\n\nM|\1', metadata)
+        # labels for characters and dialogues
+        text = re.sub(r'\n(                           ? ? ? ? ?[A-Z])', r'\nC|\1', text)
+        text = re.sub(r'\n(                 ? ? ? ? ?[A-Za-z0-9-\.\"])', r'\nD|\1', text) 
         
-        empty_lines = re.sub(r'\n\n\n\n', r'\n |\n |\n |\n |', metadata)
-        empty_lines = re.sub(r'\n\n\n', r'\n |\n |\n', empty_lines)
-        empty_lines = re.sub(r'\n\n', r'\n |\n', empty_lines)
-        page_numbers = re.sub(r'\n(\s+[0-9][0-9]?.)\n', r'\n |\1\n', empty_lines)
-        print(page_numbers)
+        # labels for scene description and specific cases
+        text = re.sub(r'\n(                      [A-Za-z])', r'\nN|\1', text)
+        text = re.sub(r'\n(                              [A-Za-z])', r'\nN|\1', text)
+        text = re.sub(r'\n(      ?[A-Za-z\"])', r'\nN|\1', text)
+        text = re.sub(r'\n(     --)', r'\nN|\1', text)
+        
+        # label for metedata
+        text = re.sub(r'\n(                     \(?[A-Za-z])', r'\nM|\1', text)
+        
+        # adding a | to every empty line or line with a pagenumber
+        text = re.sub(r'\n\n\n\n', r'\n |\n |\n |\n |', text)
+        text = re.sub(r'\n\n\n', r'\n |\n |\n', text)
+        text = re.sub(r'\n\n', r'\n |\n', text)
+        labelled_script = re.sub(r'\n(\s+[0-9][0-9]?.)\n', r'\n |\1\n', text)
+        
+        #print(labelled_script)
+        
+        return labelled_script
 
-if __name__ == "__main__":
-    create_labels(sys.argv)
+#if __name__ == "__main__":
+    #create_labels(sys.argv)
+    
+# can be invoked with:
+# labelled_script = create_labels(text)
