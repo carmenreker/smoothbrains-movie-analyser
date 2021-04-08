@@ -2,7 +2,7 @@
 
 # Wat nog moet:
 # 1
-We kunnen niet verder met de namen omdat de labels (Indy) nog niet af zijn.
+Namen toevoegen aan ondertiteling (Taede gaat een poging wagen)
 # 2
 User interface (Sijbren)
 # 3
