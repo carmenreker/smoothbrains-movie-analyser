@@ -5,7 +5,7 @@ import sys
 import re
 
 
-def create_labels(argv):
+def create_labels(text):
     """adds labels to a script and returns the labelled script"""
     #file = argv[1]
     #with open(file, 'r') as inp:
@@ -54,8 +54,8 @@ def create_labels(argv):
         
         return labelled_script
 
-#if __name__ == "__main__":
-    #create_labels(sys.argv)
+if __name__ == "__main__":
+    create_labels(sys.argv)
     
 # can be invoked with:
 # labelled_script = create_labels(text)

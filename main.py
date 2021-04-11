@@ -30,7 +30,8 @@ def match(script, subtitles):
 def main():
 
     with open('movies/mission_impossible/mi.txt', 'r') as script:
-        movie = script.read()
+        text = script.read()
+        labelled_script = create_labels(text)
 
         # Uncomment deze code om de movie te printen voor debuggen ofzo, zelf weten
         #print(movie)
