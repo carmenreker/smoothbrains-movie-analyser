@@ -4,6 +4,8 @@
 
 from loadsubtitle import loadsubtitles
 from timestamps import add_timestamps
+from labels import create_labels
+
 def match(script, subtitles):
     """Compares the subtitles to the script, and prints the percentage
        of matches"""
@@ -36,11 +38,12 @@ def main():
         # Uncomment deze code om de movie te printen voor debuggen ofzo, zelf weten
         #print(movie)
 
-    data = loadsubtitles('movies/mission_impossible/mi.srt')        
+    subtitle = loadsubtitles('movies/mission_impossible/mi.srt')        
 
-    print(add_timestamps(movie, data))
+    
+    print(add_timestamps(labelled_script, subtitle))
     # Uncomment deze code om de functie uit te voeren
-    match(movie, data)
+    match(labelled_script, subtitle)
 
     
 if __name__ == "__main__":
