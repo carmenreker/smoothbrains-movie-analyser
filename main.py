@@ -57,7 +57,6 @@ def main():
 	#print(str(subtitle_file))
 	subtitle = loadsubtitles(args.subtitleFile)
 
-	
 	print(add_timestamps(labelled_script, subtitle))
 	# Uncomment deze code om de functie uit te voeren
 	match(labelled_script, subtitle)
