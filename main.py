@@ -40,7 +40,6 @@ def main():
 
     subtitle = loadsubtitles('movies/mission_impossible/mi.srt')        
 
-    
     print(add_timestamps(labelled_script, subtitle))
     # Uncomment deze code om de functie uit te voeren
     match(labelled_script, subtitle)
