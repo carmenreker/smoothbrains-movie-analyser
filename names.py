@@ -1,3 +1,5 @@
+# Author: Taede Meijer
+
 import re
 
 def add_names(script, subtitles):
