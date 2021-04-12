@@ -4,9 +4,11 @@ import re
 
 def add_names(script, subtitles):
 
-    # We create two lists that run parallel to each other
+    # We create three lists that run parallel to each other
+    # timestamps[5] contains the timestamp of the matching line
     # matching_lines[5] contains the line that matches
     # and character_names[5] contains the speaker of that matching line. 
+    timestamps = []
     matching_lines = []
     character_names = []
 
@@ -30,11 +32,11 @@ def add_names(script, subtitles):
             if line in temporary_text:
 
                 matching_lines.append(line)
-
+                timestamps.append(subtitles[line])
                 # Save the name of the current speaker
                 name = re.match('^PLACEHOLDER\s.+\n', temporary_text)
                 name = name.group().replace("PLACEHOLDER - ", "")
                 name = name.replace("\n", "")
                 character_names.append(name)
 
-    return matching_lines, character_names
+    return timestamps, character_names, matching_lines

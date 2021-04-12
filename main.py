@@ -63,27 +63,30 @@ def main():
     
     labelled_script = add_timestamps(labelled_script, subtitle)
     #print(labelled_script)
-    # Get two lists, one with matching lines between the subtitles and script, 
-    # the other with the character names
-    matching_lines, character_names = add_names(labelled_script, subtitle)
-    #print(matching_lines, character_names)
-    #print(matching_lines)
-    # print(character_names)
+
+    # Get three lists, one with timestamps when matches occur, one with the 
+    # character name of the matched line, and one of the matched line
+    timestamps, character_names, matching_lines = add_names(labelled_script, subtitle)
+    
+    # Print the results 
+    for i in range(len(matching_lines)):
+        print(timestamps[i],character_names[i],matching_lines[i])
+
+    print("\n\nDit zijn alle matches die we hebben. \n"
+          "Hier zitten duplicates in als één stuk tekst uit de ondertiteling 2x in het script zit :/ \n"
+          "Het staat niet op volgorde van tijd :/\n"
+          "Bij loadsubtitle() wordt ingelezen als een dict, als er in de ondertiteling dezelfde tekst bij meerdere timestamps staat, dan wordt alleen de laatste timestamp wordt opgeslagen :/ \n\n")
+    
     # Print the amount of matches between the subtitles and script
     match(labelled_script, subtitle)
-    print(type(character_names))
-    print(type(subtitle))
-    print(type(labelled_script))
-    #print(len(subtitle))
-    #print(subtitle)
+
     
     
     f = open("output.csv", "w")
     f.write("Character,Subtitle,Script,Timestamp,Tag\n")
     f.close
     f = open("output.csv", "a")
-    #for i in range(len(matching_lines)):
-        #print(character_names[i],matching_lines[i])
+    
         
     
     for count, item in enumerate(subtitle):
