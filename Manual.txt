@@ -1,3 +1,4 @@
+Author(s): Sijbren van Vaals
 Deze file kan gewoon in de readme worden gekopieerd, als wat nog moet is gedaan.
 
 ## Hoe het programma moet worden gerund
