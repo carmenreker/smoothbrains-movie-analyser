@@ -53,9 +53,7 @@ def main():
                         action="append", nargs="+")
     args = parser.parse_args()
 
-    with open(args.scriptFile[0][0], 'r') as script:
-        text = script.read()
-        labelled_script = create_labels(text)
+    labelled_script = create_labels(args.scriptFile)
 
         # Uncomment deze code om de movie te printen voor debuggen ofzo, zelf weten
         # print(movie)
