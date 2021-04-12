@@ -5,10 +5,17 @@
 
 import re
 
-def clean():
-    #s = '<i>Za Druziye.<i>'
-    #t = '- yeah.'
-    print(re.sub('<.*?>','', s))
-    print(re.sub('- ', '', t))
+def clean(filepath):
+    with open(filepath, 'r') as inp:
+        subs = inp.read()
     
-clean()
+        # removes angle brackets like italic indications
+        subs = re.sub('<.*?>','', subs)
+        # removes indicators denoting multiple sentences
+        subs = re.sub('- ', '', subs)
+    
+    #print(subs)
+    return subs
+
+# invoke with:
+#clean('testfiles/cleantest.txt')
