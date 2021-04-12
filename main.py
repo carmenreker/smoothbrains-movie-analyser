@@ -38,8 +38,8 @@ def main():
                                     description="This programme aligns \
                                     subtitles and movie scripts, \
                                     output is in csv.",
-                                    usage="Enter a subtitle (.srt) and a"
-                                    "movie script (.txt) file, in this order,"
+                                    usage="Enter a subtitle (.srt) and a "
+                                    "movie script (.txt) file, in this order, "
                                     "for the programme to align.")
     parser.add_argument(
                         "subtitleFile", metavar="subtitle file",
