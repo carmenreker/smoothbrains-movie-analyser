@@ -28,7 +28,7 @@ def match(script, subtitles):
 
         else:
             counter_not_in_script += 1      
-    
+
     print("De ondertiteling matcht voor {}{} met het script".format(round(counter_is_in_script / (counter_is_in_script + counter_not_in_script) * 100, 2), "%"))
 
 
@@ -62,17 +62,46 @@ def main():
     # subtitle_file = args.subtitleFile[0]
     # print(str(subtitle_file))
     subtitle = loadsubtitles(args.subtitleFile)
-
-    labelled_script = add_timestamps(labelled_script, subtitle)
     
+    labelled_script = add_timestamps(labelled_script, subtitle)
+    print(labelled_script)
     # Get two lists, one with matching lines between the subtitles and script, 
     # the other with the character names
     matching_lines, character_names = add_names(labelled_script, subtitle)
-    # print(matching_lines, character_names)
-    
+    #print(matching_lines, character_names)
+    #print(matching_lines)
+    # print(character_names)
     # Print the amount of matches between the subtitles and script
     match(labelled_script, subtitle)
-
+    print(type(character_names))
+    print(type(subtitle))
+    print(type(labelled_script))
+    #print(len(subtitle))
+    #print(subtitle)
+    
+    
+    f = open("output.csv", "w")
+    f.write("Character,Subtitle,Script,Timestamp,Tag\n")
+    f.close
+    f = open("output.csv", "a")
+    #for i in range(len(matching_lines)):
+        #print(character_names[i],matching_lines[i])
+        
+    
+    for count, item in enumerate(subtitle):
+        if str([item][0]) in matching_lines: # Check if subtitle in match
+            place = matching_lines.index(str([item][0])) # Find the index of the match
+            f.write(character_names[place]) # Write the corresponding name to the match
+            f.write(",")
+        else:
+            f.write(",")
+        #f.write("Character,")
+        #f.write(character_names[count])
+        #f.write(",")
+        f.write(str([item][0]))
+        f.write(",Tekst script,")
+        f.write(str(subtitle[item]))
+        f.write(",Tag\n")
     
 if __name__ == "__main__":
     main()
