@@ -62,7 +62,7 @@ def main():
     subtitle = loadsubtitles(args.subtitleFile)
     
     labelled_script = add_timestamps(labelled_script, subtitle)
-    print(labelled_script)
+    #print(labelled_script)
     # Get two lists, one with matching lines between the subtitles and script, 
     # the other with the character names
     matching_lines, character_names = add_names(labelled_script, subtitle)
