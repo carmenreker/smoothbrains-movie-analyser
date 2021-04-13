@@ -3,8 +3,8 @@
 # Author(s): Taede Meijer, Sijbren van Vaals
 
 from loadsubtitle import loadsubtitles
-from timestamps import add_timestamps
 from labels import create_labels
+from timestamps import add_timestamps
 from names import add_names
 import argparse
 
@@ -65,6 +65,10 @@ def main():
     subtitle = loadsubtitles(args.subtitleFile)
 
     labelled_script = add_timestamps(labelled_script, subtitle)
+
+    output_script = open("labelled_script.txt", "w")
+    output_script.write(labelled_script)
+    output_script.close()
     # print(labelled_script)
 
     # Get three lists, one with timestamps when matches occur, one with the
@@ -90,7 +94,7 @@ def main():
 
     f = open("output.csv", "w")
     f.write("Character,Subtitle,Script,Timestamp,Tag\n")
-    f.close
+    f.close()
     f = open("output.csv", "a")
 
     for count, item in enumerate(subtitle):
