@@ -1,6 +1,6 @@
 # Author(s): Taede Meijer, Carmen Reker, Sijbren van Vaals
 import pysrt
-
+from clean import clean
 
 def loadsubtitles(filepath):
     """ Loads the subtitles and returns it """
@@ -13,6 +13,7 @@ def loadsubtitles(filepath):
         # print(subtitle.text)
         text = subtitle.text
         text = text.replace("\n", " ")
+        text = clean(text)
         time = str(subtitle.start)
         data[text] = time
 
