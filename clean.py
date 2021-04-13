@@ -6,10 +6,7 @@
 import re
 
 
-def clean(filepath):
-    with open(filepath, 'r') as inp:
-        subs = inp.read()
-
+def clean(subs):
         # removes angle brackets like italic indications
         subs = re.sub('<.*?>', '', subs)
         # removes indicators denoting multiple sentences
