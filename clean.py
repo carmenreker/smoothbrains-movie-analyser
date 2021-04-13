@@ -5,17 +5,18 @@
 
 import re
 
+
 def clean(filepath):
     with open(filepath, 'r') as inp:
         subs = inp.read()
-    
+
         # removes angle brackets like italic indications
-        subs = re.sub('<.*?>','', subs)
+        subs = re.sub('<.*?>', '', subs)
         # removes indicators denoting multiple sentences
         subs = re.sub('- ', '', subs)
-    
-    #print(subs)
+
+    # print(subs)
     return subs
 
 # invoke with:
-#clean('testfiles/cleantest.txt')
+# clean('testfiles/cleantest.txt')
