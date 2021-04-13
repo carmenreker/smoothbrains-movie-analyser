@@ -4,7 +4,7 @@
 
 from loadsubtitle import loadsubtitles
 from labels import create_labels
-from timestamps import add_timestamps
+#from timestamps import add_timestamps
 from names import add_names
 import argparse
 
@@ -64,12 +64,14 @@ def main():
     # print(str(subtitle_file))
     subtitle = loadsubtitles(args.subtitleFile)
 
-    labelled_script = add_timestamps(labelled_script, subtitle)
-
+    #labelled_script = add_timestamps(labelled_script, subtitle)
+    labelled_script2 = labelled_script.split("\n")
+    print(labelled_script2)
+    """
     output_script = open("labelled_script.txt", "w")
     output_script.write(labelled_script)
     output_script.close()
-    # print(labelled_script)
+    #print(labelled_script)
 
     # Get three lists, one with timestamps when matches occur, one with the
     # character name of the matched line, and one of the matched line
@@ -77,8 +79,8 @@ def main():
         add_names(labelled_script, subtitle))
 
     # Print the results
-    for i in range(len(matching_lines)):
-        print(timestamps[i], character_names[i], matching_lines[i])
+    #for i in range(len(matching_lines)):
+    #    print(timestamps[i], character_names[i], matching_lines[i])
 
     print("\n\nDit zijn alle matches die we hebben. \n"
           "Hier zitten duplicates in als één stuk tekst \
@@ -107,17 +109,11 @@ def main():
             f.write(",")
         else:
             f.write(",")
-        # f.write("Character,")
-        # f.write(character_names[count])
-        # f.write(",")
         f.write(str([item][0]))
         f.write(",Tekst script,")
         f.write(str(subtitle[item]))
         f.write(",Tag\n")
-
+    f.close() """
 
 if __name__ == "__main__":
     main()
-
-# Wat nog moet:
-# De juiste naam bij de subtitle zetten ?
