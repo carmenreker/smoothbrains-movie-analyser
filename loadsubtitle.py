@@ -12,6 +12,7 @@ def loadsubtitles(filepath):
         # print(subtitle.start)
         # print(subtitle.text)
         text = subtitle.text
+        text = text.replace("\n", "")
         time = str(subtitle.start)
         data[text] = time
 
