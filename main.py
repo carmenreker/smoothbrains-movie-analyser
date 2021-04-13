@@ -68,7 +68,7 @@ def main():
     labelled_script2 = labelled_script.split("\n")
     #print(labelled_script2)
 
-    """
+    
     output_script = open("labelled_script.txt", "w")
     output_script.write(labelled_script)
     output_script.close()
@@ -76,7 +76,11 @@ def main():
 
     # Get three lists, one with timestamps when matches occur, one with the
     # character name of the matched line, and one of the matched line
-    
+    timestamps, character_names, matching_lines, tags = (
+        add_names(labelled_script, subtitle))
+    # Print the results
+    for i in range(len(matching_lines)):
+        print(timestamps[i], character_names[i], matching_lines[i], tags[i])
 
     print("\n\nDit zijn alle matches die we hebben. \n"
           "Hier zitten duplicates in als één stuk tekst \
@@ -109,7 +113,7 @@ def main():
         f.write(",Tekst script,")
         f.write(str(subtitle[item]))
         f.write(",Tag\n")
-    f.close() """
+    f.close() 
 
 if __name__ == "__main__":
     main()

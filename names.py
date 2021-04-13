@@ -3,6 +3,52 @@
 import re
 
 
+def get_tag(sub, text):
+    """ Grabs the tags and returns them in a list """
+
+    # Removes all the double spaces, to make the search more efficient.
+    while text.count("  ") > 0:
+        text = text.replace("  ", " ")
+    
+    index = text.find(sub)
+    #print("\n\n===========================================================\n")
+    #print(sub, index)
+    #print(text)
+
+    #print("-----------------------------------------------------------\n")
+    text = text[:index]
+    #print(text)
+
+    tags = ""
+    i = 0
+    while i < (len(text)) and text[-i] != "|":
+        i += 1
+        #print(i, text[-i])
+        if text[-i] == "|":
+
+            tag = text[-i-1]
+
+    
+    return tag
+    #for i in range(len(text)):
+        #print(text[i-1])
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+    #tag = text[text.find(sub)-3]
+    #print("EY YO DE TAG VAN DIE HIERBOVEN IS: ", tag)
+
+
 def add_names(script, subtitles):
 
     # We create three lists that run parallel to each other
@@ -10,8 +56,9 @@ def add_names(script, subtitles):
     # matching_lines[5] contains the line that matches
     # and character_names[5] contains the speaker of that matching line.
     timestamps = []
-    matching_lines = []
     character_names = []
+    matching_lines = []
+    tags = []
 
     amount = script.count("C|")
 
@@ -28,6 +75,7 @@ def add_names(script, subtitles):
         temporary_text = temporary_text.replace(
             "                          ", " - ")
 
+        # Loopt over de opgeslagen zinnen in de ondertiteling
         for line in subtitles:
 
             # If a line in the subtitles has been found in the temporary text:
@@ -41,4 +89,7 @@ def add_names(script, subtitles):
                 name = name.replace("\n", "")
                 character_names.append(name)
 
-    return timestamps, character_names, matching_lines
+                tags.append(get_tag(line, temporary_text))
+
+    #print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ DIT ZIJN DE TAGS HOPELIJK\n", tags)
+    return timestamps, character_names, matching_lines, tags
