@@ -71,7 +71,14 @@ def main():
         else:
             f.write(",")
         f.write(str([item][0]))
-        f.write(",Tekst script,")
+        #f.write(",Tekst script,")
+        if str([item][0]) in matching_lines:
+            #place = matching_lines.index(str([item][0]))
+            f.write(",")
+            f.write([item][0])
+            f.write(",")
+        else:
+            f.write(",,")
         f.write(str(subtitle[item]))
         f.write(",")
         if str([item][0]) in matching_lines:
