@@ -1,0 +1,16 @@
+Author(s): Sijbren van Vaals
+Deze file kan gewoon in de readme worden gekopieerd, als wat nog moet is gedaan.
+
+## Hoe het programma moet worden gerund
+
+## Omschrijving opdracht
+Het doel van deze opdracht is om in een groepje een preprocessing tool te maken die subtitles en movie scripts samenvoegt.
+Om zo beter te worden in het werken in een groepje via een 'version control system', in dit geval Git(Hub).
+
+## Wie deed wat
+Taede:
+Carmen:
+Indy:
+Sijbren:
+
+

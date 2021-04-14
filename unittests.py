@@ -3,21 +3,21 @@
 from clean import clean
 from labels import create_labels
 from loadsubtitle import loadsubtitles
-# from names import add_names
-# from timestamps import add_timestamps
+from names import add_names
+from main import match
 
 
 class TestClean:
     def test_clean(self):
-        assert clean('testfiles/cleantest.txt') == 'It was good...'
-        assert clean('testfiles/cleantest2.txt') == 'Are you game?'
+        assert clean('<i>It was good...</i>') == 'It was good...'
+        assert clean('- Are you game?') == 'Are you game?'
 
 
 class TestSubs:
     def test_subtitles(self):
         assert loadsubtitles(
-            [["testfiles/subtest.srt",
-                "movies/mission_impossible/mi.txt"]]) == (
+            [['testfiles/subtest.srt',
+                'movies/mission_impossible/mi.txt']]) == (
                     {'OK... Here we go. Focus.': '00:00:48,690'})
 
 
@@ -38,3 +38,12 @@ class TestLabels:
         assert 'M|                           THE END' \
             in create_labels([['movies/mission_impossible/mi.txt',
                                'movies/mission_impossible/mi.srt']])
+
+
+class TestNames:
+    def test_names(self):
+        script = create_labels([['movies/mission_impossible/mi.txt']])
+        subtitles = loadsubtitles([['testfiles/namestest.srt']])
+        assert add_names(script, subtitles) == (['01:45:49,593'],
+                                                ['FLIGHT ATTENDANT '],
+                                                ['Aruba, perhaps?'])

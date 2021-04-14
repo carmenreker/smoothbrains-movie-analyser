@@ -7,12 +7,12 @@ import re
 
 
 def clean(subs):
+    """ Cleans the script and returns the clean text """
     # removes angle brackets like italic indications
     subs = re.sub('<.*?>', '', subs)
     # removes indicators denoting multiple sentences
     subs = re.sub('- ', '', subs)
 
-    # print(subs)
     return subs
 
 # invoke with:
