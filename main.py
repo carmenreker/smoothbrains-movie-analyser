@@ -69,9 +69,9 @@ def main():
         get_matches(labelled_script, subtitle))
 
 
-    for i in range(len(matching_lines)):
-        print(timestamps[i], character_names[i], matching_lines[i], tags[i])
-    print(len(timestamps), len(character_names), len(matching_lines), len(tags))
+    #for i in range(len(matching_lines)):
+    #    print(timestamps[i], character_names[i], matching_lines[i], tags[i])
+    #print(len(timestamps), len(character_names), len(matching_lines), len(tags))
 
     print("\n\nDit zijn alle matches die we hebben. \n"
           "Hier zitten duplicates in als één stuk tekst \
@@ -103,7 +103,13 @@ def main():
         f.write(str([item][0]))
         f.write(",Tekst script,")
         f.write(str(subtitle[item]))
-        f.write(",Tag\n")
+        f.write(",")
+        if str([item][0]) in matching_lines:
+            place = matching_lines.index(str([item][0]))
+            f.write(tags[place])
+        else:
+            f.write("D")
+        f.write("\n")
     f.close() 
 
 if __name__ == "__main__":
