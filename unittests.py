@@ -5,7 +5,6 @@ from labels import create_labels
 from loadsubtitle import loadsubtitles
 from matches import get_tag
 from matches import get_matches
-from main import compare
 
 
 class TestClean:
@@ -46,10 +45,11 @@ class TestNames:
         script = create_labels([['movies/mission_impossible/mi.txt']])
         subtitles = loadsubtitles([['testfiles/namestest.srt']])
         assert get_matches(script, subtitles) == (['01:45:49,593'],
-                                                ['FLIGHT ATTENDANT '],
-                                                ['Aruba, perhaps?'],
-                                                ['D'])
-                                                
+                                                  ['FLIGHT ATTENDANT '],
+                                                  ['Aruba, perhaps?'],
+                                                  ['D'])
+
+
 class TestTag:
     def test_tag(self):
         assert get_tag('Hello', 'D|  Hello') == 'D'

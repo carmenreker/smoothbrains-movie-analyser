@@ -1,5 +1,6 @@
 # Filename: main.py
-# Description: Takes a movie script and a subtitle file and aligns them, outputs the aligned file in csv.
+# Description: Takes a movie script and a subtitle file and aligns them,
+# outputs the aligned file in csv.
 # Author(s): Taede Meijer, Sijbren van Vaals
 
 from loadsubtitle import loadsubtitles
@@ -34,11 +35,10 @@ def main():
 
     subtitle = loadsubtitles(args.subtitleFile)
 
-    # Output the script to labelled_script.txt. 
+    # Output the script to labelled_script.txt.
     output_script = open("labelled_script.txt", "w")
     output_script.write(labelled_script)
     output_script.close()
-    
 
     # Get four lists, one with timestamps when matches occur, one with the
     # character name of the matched line, and one of the matched line
@@ -51,8 +51,9 @@ def main():
     f.write("Character,Subtitle,Script,Timestamp,Tag\n")
     f.close()
     f = open("output.csv", "a")
-    
-    # Write the character name, subtitle, text of script, timestamp and tag to output.csv.
+
+    # Write the character name, subtitle, text of script,
+    # timestamp and tag to output.csv.
     for count, item in enumerate(subtitle):
         # Check if subtitle in match
         if str([item][0]) in matching_lines:
@@ -80,7 +81,8 @@ def main():
         f.write("\n")
     f.close()
 
-    print("You can find the aligned file (output.csv) in the current directory")
+    print("You can find the aligned file(output.csv) in the current directory")
+
 
 if __name__ == "__main__":
     main()
