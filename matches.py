@@ -1,3 +1,5 @@
+# Filename: matches.py
+# Description: Two functions that return the timestamps, character names and tags of matching lines.
 # Author: Taede Meijer
 
 import re
@@ -16,7 +18,6 @@ def get_tag(sub, text):
     # the tag of the match.
     text = text[:index]
 
-    tags = ""
     i = 0
     while i < (len(text)) and text[-i] != "|":
         i += 1
@@ -27,7 +28,7 @@ def get_tag(sub, text):
 
     return tag
 # Invoke with:
-# get_tag(matching subtitle, )
+# get_tag(matching subtitle, text to find the tag in)
 
 
 def get_matches(script, subtitles):
@@ -49,7 +50,7 @@ def get_matches(script, subtitles):
     for i in range(amount):
         first = script.find("C|")
 
-        # Replace the first C with a placeholder, so we can locate the next
+        # Replace the first C| with a placeholder, so we can locate the next
         script = script.replace("C|", "PLACEHOLDER", 1)
         second = script.find("C|")
 
@@ -59,7 +60,7 @@ def get_matches(script, subtitles):
         temporary_text = temporary_text.replace(
             "                          ", " - ")
 
-        # Loopt over de opgeslagen zinnen in de ondertiteling
+        # Loops over every saved subtitle
         for line in subtitles:
 
             # If a line in the subtitles has been found in the temporary text:
