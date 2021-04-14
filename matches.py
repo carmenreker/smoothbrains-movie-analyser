@@ -16,7 +16,6 @@ def get_tag(sub, text):
     # the tag of the match. 
     text = text[:index]
 
-
     tags = ""
     i = 0
     while i < (len(text)) and text[-i] != "|":
@@ -27,11 +26,15 @@ def get_tag(sub, text):
             tag = text[-i-1]
 
     return tag
+# Invoke with:
+# get_tag(matching subtitle, )
+
 
 
 def get_matches(script, subtitles):
     """ Returns a list of matching lines, with according character names, 
         timestamps and tags. """
+        
     # We create three lists that run parallel to each other
     # timestamps[5] contains the timestamp of the matching line
     # matching_lines[5] contains the line that matches
@@ -51,7 +54,7 @@ def get_matches(script, subtitles):
         script = script.replace("C|", "PLACEHOLDER", 1)
         second = script.find("C|")
 
-        # Saves the string in between the first and second 'C|'
+        # Saves the string in between the first and second occuring 'C|'
         temporary_text = script[first:second]
 
         temporary_text = temporary_text.replace(
@@ -65,6 +68,7 @@ def get_matches(script, subtitles):
 
                 matching_lines.append(line)
                 timestamps.append(subtitles[line])
+
                 # Save the name of the current speaker
                 name = re.match(r'^PLACEHOLDER\s.+\n', temporary_text)
                 name = name.group().replace("PLACEHOLDER - ", "")
@@ -73,5 +77,6 @@ def get_matches(script, subtitles):
 
                 tags.append(get_tag(line, temporary_text))
 
-    #print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ DIT ZIJN DE TAGS HOPELIJK\n", tags)
     return timestamps, character_names, matching_lines, tags
+# Invoke with: 
+# get_matches(labelled_script, dictionary_of_subtitles)
