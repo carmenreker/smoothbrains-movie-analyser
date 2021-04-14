@@ -59,4 +59,4 @@ def create_labels(files):
         return labelled_script
 
 # can be invoked with:
-# labelled_script = create_labels(text)
+# labelled_script = create_labels(files)
