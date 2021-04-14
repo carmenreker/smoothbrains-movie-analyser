@@ -1,10 +1,9 @@
 # Filename: main.py
-# Description: opens the files and calls the other programs
+# Description: Takes a movie script and a subtitle file and aligns them, outputs the aligned file in csv.
 # Author(s): Taede Meijer, Sijbren van Vaals
 
 from loadsubtitle import loadsubtitles
 from labels import create_labels
-#from timestamps import add_timestamps
 from matches import get_matches
 from compare import compare
 import argparse
@@ -46,20 +45,14 @@ def main():
     timestamps, character_names, matching_lines, tags = (
         get_matches(labelled_script, subtitle))
 
-# Deze comments gaan nog weg
-    #for i in range(len(matching_lines)):
-    #    print(timestamps[i], character_names[i], matching_lines[i], tags[i])
-
-    #print(len(timestamps), len(character_names), len(matching_lines), len(tags))
-
-    # Print the amount of matches between the subtitles and script
     compare(labelled_script, subtitle)
 
     f = open("output.csv", "w")
     f.write("Character,Subtitle,Script,Timestamp,Tag\n")
     f.close()
     f = open("output.csv", "a")
-
+    
+    # Write the character name, subtitle, text of script, timestamp and tag to output.csv.
     for count, item in enumerate(subtitle):
         # Check if subtitle in match
         if str([item][0]) in matching_lines:
@@ -71,9 +64,7 @@ def main():
         else:
             f.write(",")
         f.write(str([item][0]))
-        #f.write(",Tekst script,")
         if str([item][0]) in matching_lines:
-            #place = matching_lines.index(str([item][0]))
             f.write(",")
             f.write([item][0])
             f.write(",")
@@ -87,7 +78,9 @@ def main():
         else:
             f.write("D")
         f.write("\n")
-    f.close() 
+    f.close()
+
+    print("You can find the aligned file (output.csv) in the current directory")
 
 if __name__ == "__main__":
     main()

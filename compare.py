@@ -19,7 +19,7 @@ def compare(script, subtitles):
         else:
             counter_not_in_script += 1
 
-    print("De ondertiteling matcht voor {}{} met het script".format(
+    print("The subtitles matches for {}{} with the script".format(
         round(counter_is_in_script / (counter_is_in_script +
               counter_not_in_script) * 100, 2), "%"))
 
