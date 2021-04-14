@@ -5,11 +5,11 @@
 from loadsubtitle import loadsubtitles
 from labels import create_labels
 #from timestamps import add_timestamps
-from names import add_names
+from matches import get_matches
 import argparse
 
 
-def match(script, subtitles):
+def compare(script, subtitles):
     """Compares the subtitles to the script, and prints the percentage
        of matches"""
 
@@ -22,9 +22,6 @@ def match(script, subtitles):
         # checks if the subtitle text is somewhere in the script
         if line in script:
 
-            # Uncomment deze twee als je de matches wil printen.
-            # print("Match: ", end="")
-            # print(line)
             counter_is_in_script += 1
 
         else:
@@ -58,29 +55,25 @@ def main():
 
     labelled_script = create_labels(args.scriptFile)
 
-    # Uncomment deze code om de movie te printen voor debuggen ofzo, zelf weten
-    # print(movie)
-    # subtitle_file = args.subtitleFile[0]
-    # print(str(subtitle_file))
     subtitle = loadsubtitles(args.subtitleFile)
 
-    #labelled_script = add_timestamps(labelled_script, subtitle)
-    labelled_script2 = labelled_script.split("\n")
-    #print(labelled_script2)
-
     
+
+    # Output the script to labelled_script.txt. 
     output_script = open("labelled_script.txt", "w")
     output_script.write(labelled_script)
     output_script.close()
-    #print(labelled_script)
+    
 
-    # Get three lists, one with timestamps when matches occur, one with the
+    # Get four lists, one with timestamps when matches occur, one with the
     # character name of the matched line, and one of the matched line
     timestamps, character_names, matching_lines, tags = (
-        add_names(labelled_script, subtitle))
-    # Print the results
+        get_matches(labelled_script, subtitle))
+
+
     for i in range(len(matching_lines)):
         print(timestamps[i], character_names[i], matching_lines[i], tags[i])
+    print(len(timestamps), len(character_names), len(matching_lines), len(tags))
 
     print("\n\nDit zijn alle matches die we hebben. \n"
           "Hier zitten duplicates in als één stuk tekst \
@@ -92,7 +85,7 @@ def main():
           dan wordt alleen de laatste timestamp wordt opgeslagen :/ \n\n")
 
     # Print the amount of matches between the subtitles and script
-    match(labelled_script, subtitle)
+    compare(labelled_script, subtitle)
 
     f = open("output.csv", "w")
     f.write("Character,Subtitle,Script,Timestamp,Tag\n")
