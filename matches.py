@@ -1,5 +1,6 @@
 # Filename: matches.py
-# Description: Two functions that return the timestamps, character names and tags of matching lines.
+# Description: Two functions that return the timestamps,
+#              character names and tags of matching lines.
 # Author: Taede Meijer
 
 import re

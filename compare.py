@@ -1,10 +1,11 @@
 # Filename: compare.py
-# Description: Prints the percentage of how many sentences in the subtitles match with the script
+# Description: Prints the percentage of how many sentences in the
+#              subtitles match with the script
 # Authors: Taede Meijer, Sijbren van Vaals
 
 
 def compare(script, subtitles):
-    """ Prints the percentage of how many sentences in the subtitles 
+    """ Prints the percentage of how many sentences in the subtitles
         match with the script """
 
     counter_not_in_script = 0
@@ -13,7 +14,7 @@ def compare(script, subtitles):
     # Loops over every subtitle text in the dictionary
     for line in subtitles:
         line = line.lower()
-        
+
         # Checks if the subtitle text is somewhere in the script
         if line in script:
 
