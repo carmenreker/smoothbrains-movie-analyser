@@ -9,7 +9,8 @@ def compare(script, subtitles):
 
     # loops over each subtitle text in the dictionary
     for line in subtitles:
-
+        line = line.lower()
+        script = script.lower()
         # checks if the subtitle text is somewhere in the script
         if line in script:
 
