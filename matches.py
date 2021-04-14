@@ -9,18 +9,18 @@ def get_tag(sub, text):
     # Removes all the double spaces, to make the search more efficient.
     while text.count("  ") > 0:
         text = text.replace("  ", " ")
-    
+
     index = text.find(sub)
 
     # Save the text up to the current index. This way we can loop back to grab
-    # the tag of the match. 
+    # the tag of the match.
     text = text[:index]
 
     tags = ""
     i = 0
     while i < (len(text)) and text[-i] != "|":
         i += 1
-        # Save the tag at index -1 if the current character is a "|"" 
+        # Save the tag at index -1 if the current character is a "|""
         if text[-i] == "|":
 
             tag = text[-i-1]
@@ -30,9 +30,8 @@ def get_tag(sub, text):
 # get_tag(matching subtitle, )
 
 
-
 def get_matches(script, subtitles):
-    """ Returns a list of matching lines, with according character names, 
+    """ Returns a list of matching lines, with according character names,
         timestamps and tags. """
 
     # We create three lists that run parallel to each other
@@ -78,5 +77,5 @@ def get_matches(script, subtitles):
                 tags.append(get_tag(line, temporary_text))
 
     return timestamps, character_names, matching_lines, tags
-# Invoke with: 
+# Invoke with:
 # get_matches(labelled_script, dictionary_of_subtitles)

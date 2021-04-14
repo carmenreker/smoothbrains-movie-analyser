@@ -1,5 +1,6 @@
 # Authors: Taede Meijer, Sijbren van Vaals
 
+
 def compare(script, subtitles):
     """Compares the subtitles to the script, and prints the percentage
        of matches"""
