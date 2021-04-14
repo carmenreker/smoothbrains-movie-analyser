@@ -16,4 +16,4 @@ def clean(subs):
     return subs
 
 # invoke with:
-# clean('testfiles/cleantest.txt')
+# clean(string_to_be_cleaned)

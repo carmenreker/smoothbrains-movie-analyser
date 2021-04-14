@@ -57,8 +57,6 @@ def main():
 
     subtitle = loadsubtitles(args.subtitleFile)
 
-    
-
     # Output the script to labelled_script.txt. 
     output_script = open("labelled_script.txt", "w")
     output_script.write(labelled_script)
