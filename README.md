@@ -37,7 +37,7 @@ meerdere typen tekst op dezelfde indentatie.
 
 loadsubtitle.py :
 
-- We hebben door een dictionary te gebruiken problemen gehad met scriptlines die
+- We hebben door een dictionary te gebruiken problemen gehad met subtitles die
 meerdere keren voorkwamen. We hadden echter het gevoel dat een dictionary hier 
 de meest efficiente manier was om de subtitles op te slaan.
 
