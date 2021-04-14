@@ -34,7 +34,7 @@ def get_tag(sub, text):
 def get_matches(script, subtitles):
     """ Returns a list of matching lines, with according character names, 
         timestamps and tags. """
-        
+
     # We create three lists that run parallel to each other
     # timestamps[5] contains the timestamp of the matching line
     # matching_lines[5] contains the line that matches

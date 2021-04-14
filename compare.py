@@ -21,3 +21,6 @@ def compare(script, subtitles):
     print("De ondertiteling matcht voor {}{} met het script".format(
         round(counter_is_in_script / (counter_is_in_script +
               counter_not_in_script) * 100, 2), "%"))
+
+# Invoke with:
+# compare(script, dictionary_of_subtitles)
